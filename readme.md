@@ -4,7 +4,14 @@
 
 Cette application aide les utilisateurs à trouver des activités adaptées à leurs capacités physiques, en utilisant l'API d'OpenAI pour générer des suggestions et Google Maps pour les afficher sur une carte. Voici quelques idées pour améliorer et étendre les fonctionnalités de l'application.
 
-## Améliorations Proposées
+## TODO
+
+- Géolocaliser pour positionner l'utilisateur au milieu de la carte
+- Améliorer l'UI avec un logo et un style associé
+- Porter l'application sur Android avec Expo
+- Ajouter des fonctionnalités : persistance de données, personnalisation (budget, durée - ouvert maintenant, type - culturel, social, physique + autres cf questionnaire) avec "Commencez tout de suite - Faire le questionnaire (2 minutes)"
+
+## Améliorations proposées par GPT
 
 ### 1. Amélioration de l'Interface Utilisateur (UI/UX)
 
