@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Suggestions d'Activités Adaptées</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Inclusion de l'API Google Maps avec la clé correcte -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI2pyDrPcErKRWMa_tbs7pbgV8KD08EPk&callback=initMap"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1>Suggestions d'Activités Adaptées</h1>
+    <form id="capabilities-form">
+      <label>
+        <input type="checkbox" id="pmr" name="capabilities" value="pmr" />
+        PMR </label
+      ><br />
+      <label>
+        <input
+          type="checkbox"
+          id="easily_fatigued"
+          name="capabilities"
+          value="easily_fatigued"
+        />
+        Fatigue vite </label
+      ><br />
+      <label>
+        <input type="checkbox" id="valid" name="capabilities" value="valid" />
+        Valide </label
+      ><br /><br />
+      <button type="submit">Obtenir des suggestions</button>
+    </form>
+
+    <div id="map"></div>
+
+    <!-- Charger le script après les éléments HTML -->
+    <script src="script.js"></script>
+  </body>
+</html>
