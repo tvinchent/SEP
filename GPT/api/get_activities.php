@@ -31,7 +31,7 @@ if (!empty($input['pmr'])) {
     $capabilities[] = "personne à mobilité réduite (PMR)";
 }
 if (!empty($input['easily_fatigued'])) {
-    $capabilities[] = "facilement fatigué";
+    $capabilities[] = "fatigue facilement";
 }
 if (!empty($input['valid'])) {
     $capabilities[] = "valide";
