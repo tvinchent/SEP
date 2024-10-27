@@ -1,4 +1,4 @@
-# Suggestions d'Améliorations pour l'Application de Suggestions d'Activités Adaptées
+# Application de Suggestions d'Activités Adaptées
 
 ## Introduction
 
