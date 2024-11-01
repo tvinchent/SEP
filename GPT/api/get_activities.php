@@ -41,7 +41,7 @@ if (!empty($input['pmr'])) {
     $capabilities[] = "personne à mobilité réduite (PMR)";
 }
 if (!empty($input['easily_fatigued'])) {
-    $capabilities[] = "fatigue facilement";
+    $capabilities[] = "facilement fatigue";
 }
 if (!empty($input['valid'])) {
     $capabilities[] = "valide";
@@ -56,7 +56,17 @@ if (empty($capabilities)) {
 $capabilities_text = implode(", ", $capabilities);
 
 // Créer le prompt pour l'API OpenAI
-$prompt = "Génère une liste de 5 activités adaptées pour une personne qui est $capabilities_text se trouvant à la latitude $userLatitude et la longitude $userLongitude. Retourne les résultats au format JSON avec un tableau nommé 'activities' contenant pour chaque activité les champs 'name' (nom de l'activité), 'description' (description de l'activité), 'latitude' et 'longitude' (coordonnées géographiques de l'activité proches de la position de l'utilisateur). Assure-toi que la sortie est uniquement le JSON sans texte supplémentaire.";
+$prompt = "Génère une liste de 5 activités adaptées pour une personne qui est $capabilities_text se trouvant à la latitude $userLatitude et la longitude $userLongitude. Retourne les résultats au format JSON avec un tableau nommé 'activities' contenant pour chaque activité les champs suivants :
+- 'name' : nom de l'activité
+- 'description' : description de l'activité
+- 'latitude' et 'longitude' : coordonnées géographiques de l'activité proches de la position de l'utilisateur
+- 'opening_hours' : horaires d'ouverture (si disponibles)
+- 'booking_link' : URL pour la réservation en ligne (si disponible)
+- 'phone_number' : numéro de téléphone (si disponible)
+Assure-toi que la sortie est uniquement le JSON sans texte supplémentaire.";
+
+// Limiter le nombre de tokens pour éviter les réponses trop longues
+$maxTokens = 1500;
 
 $apiUrl = 'https://api.openai.com/v1/chat/completions';
 
@@ -74,7 +84,7 @@ $requestData = [
         ]
     ],
     "temperature" => 0.7,
-    "max_tokens" => 1000,
+    "max_tokens" => $maxTokens,
     "n" => 1,
     "stop" => null,
 ];

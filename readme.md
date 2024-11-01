@@ -4,6 +4,15 @@
 
 Cette application aide les utilisateurs à trouver des activités adaptées à leurs capacités physiques, en utilisant l'API d'OpenAI pour générer des suggestions et Google Maps pour les afficher sur une carte. Voici quelques idées pour améliorer et étendre les fonctionnalités de l'application.
 
+## Version 0.2
+
+- Ajout de la geolicalisation de l'utilisateur
+- Affichage des infos des activités en dessous de la carte
+- Fix des warning relatifs à l'utilisation d'une mauvaise version de map
+
+Limites:
+- Les markers ne sont pas cliquables. Pour les rendre cliquable, il faudrait utiliser la beta mais alors retour des warnings https://developers.google.com/maps/documentation/javascript/versions?hl=fr#choosing-the-beta-channel
+
 ## TODO
 
 - Géolocaliser pour positionner l'utilisateur au milieu de la carte

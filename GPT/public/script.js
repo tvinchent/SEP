@@ -119,23 +119,61 @@ document
       }
       window.markers = [];
 
+      // Effacer les anciennes activités affichées
+      const activitiesContainer = document.getElementById(
+        "activities-container"
+      );
+      activitiesContainer.innerHTML = "";
+
       // Ajouter les nouveaux marqueurs
       data.activities.forEach((activity) => {
         const marker = new AdvancedMarkerElement({
           position: { lat: activity.latitude, lng: activity.longitude },
           map: map,
           title: activity.name,
+          gmpClickable: true,
         });
 
-        const infoWindow = new google.maps.InfoWindow({
-          content: `<h3>${activity.name}</h3><p>${activity.description}</p>`,
-        });
+        // Stocker les informations de l'activité dans le marqueur
+        marker.activityData = activity;
 
         marker.addListener("gmp-click", () => {
-          infoWindow.open(map, marker);
+          // Afficher les informations de l'activité sélectionnée
+          displayActivityDetails(activity);
+        });
+
+        google.maps.event.addListener(marker, "gmp-click", () => {
+          displayActivityDetails(activity);
         });
 
         window.markers.push(marker);
+
+        // Créer l'élément d'affichage de l'activité
+        const activityElement = document.createElement("div");
+        activityElement.classList.add("activity");
+
+        let activityContent = `<h3>${activity.name}</h3>
+                                   <p>${activity.description}</p>`;
+
+        if (activity.opening_hours) {
+          activityContent += `<p><strong>Horaires d'ouverture :</strong> ${activity.opening_hours}</p>`;
+        }
+
+        activityContent += '<div class="activity-links">';
+
+        if (activity.booking_link) {
+          activityContent += `<a href="${activity.booking_link}" target="_blank" title="Réservation en ligne"><img src="book.webp" alt="Réservation en ligne" class="icon"></a>`;
+        }
+
+        if (activity.phone_number) {
+          activityContent += `<a href="tel:${activity.phone_number}" title="Appeler"><img src="tel.png" alt="Appeler" class="icon"></a>`;
+        }
+
+        activityContent += "</div>";
+
+        activityElement.innerHTML = activityContent;
+
+        activitiesContainer.appendChild(activityElement);
       });
 
       // Ajuster la vue de la carte pour inclure tous les marqueurs
@@ -153,3 +191,38 @@ document
       alert("Une erreur est survenue lors de la récupération des suggestions.");
     }
   });
+
+// Fonction pour afficher les détails de l'activité sélectionnée
+function displayActivityDetails(activity) {
+  const activitiesContainer = document.getElementById("activities-container");
+  activitiesContainer.innerHTML = ""; // Effacer le contenu précédent
+
+  const activityElement = document.createElement("div");
+  activityElement.classList.add("activity");
+
+  let activityContent = `<h3>${activity.name}</h3>
+                           <p>${activity.description}</p>`;
+
+  if (activity.opening_hours) {
+    activityContent += `<p><strong>Horaires d'ouverture :</strong> ${activity.opening_hours}</p>`;
+  }
+
+  activityContent += '<div class="activity-links">';
+
+  if (activity.booking_link) {
+    activityContent += `<a href="${activity.booking_link}" target="_blank" rel="noopener noreferrer" title="Réservation en ligne"><img src="icons/booking.png" alt="Réservation en ligne" class="icon"></a>`;
+  }
+
+  if (activity.phone_number) {
+    activityContent += `<a href="tel:${activity.phone_number}" title="Appeler"><img src="icons/phone.png" alt="Appeler" class="icon"></a>`;
+  }
+
+  activityContent += "</div>";
+
+  activityElement.innerHTML = activityContent;
+
+  activitiesContainer.appendChild(activityElement);
+
+  // Optionnel : faire défiler jusqu'à l'activité
+  activityElement.scrollIntoView({ behavior: "smooth" });
+}

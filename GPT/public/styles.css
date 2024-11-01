@@ -23,3 +23,35 @@ form {
     margin: 0 auto;
     /* Caché par défaut, affiché après les suggestions */
 }
+
+/* styles.css */
+
+/* Styles pour le conteneur des activités */
+#activities-container {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.activity {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.activity h3 {
+    margin: 0;
+}
+
+.activity-links {
+    margin-top: 10px;
+}
+
+.activity-links .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Styles pour les icônes */
+.icon {
+    vertical-align: middle;
+}
