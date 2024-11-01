@@ -25,6 +25,16 @@ if (!$input) {
     exit();
 }
 
+// Récupérer la position géolocalisée de l'utilisateur
+$userLatitude = isset($input['latitude']) ? $input['latitude'] : null;
+$userLongitude = isset($input['longitude']) ? $input['longitude'] : null;
+
+if ($userLatitude === null || $userLongitude === null) {
+    http_response_code(400);
+    echo json_encode(["error" => "La position de l'utilisateur est manquante."]);
+    exit();
+}
+
 // Construire le prompt basé sur les capacités de l'utilisateur
 $capabilities = [];
 if (!empty($input['pmr'])) {
@@ -46,7 +56,7 @@ if (empty($capabilities)) {
 $capabilities_text = implode(", ", $capabilities);
 
 // Créer le prompt pour l'API OpenAI
-$prompt = "Génère une liste de 5 activités adaptées pour une personne qui est $capabilities_text. Retourne les résultats au format JSON avec un tableau nommé 'activities' contenant pour chaque activité les champs 'name' (nom de l'activité), 'description' (description de l'activité), 'latitude' et 'longitude' (coordonnées approximatives à Paris). Assure-toi que la sortie est uniquement le JSON sans texte supplémentaire.";
+$prompt = "Génère une liste de 5 activités adaptées pour une personne qui est $capabilities_text se trouvant à la latitude $userLatitude et la longitude $userLongitude. Retourne les résultats au format JSON avec un tableau nommé 'activities' contenant pour chaque activité les champs 'name' (nom de l'activité), 'description' (description de l'activité), 'latitude' et 'longitude' (coordonnées géographiques de l'activité proches de la position de l'utilisateur). Assure-toi que la sortie est uniquement le JSON sans texte supplémentaire.";
 
 $apiUrl = 'https://api.openai.com/v1/chat/completions';
 
