@@ -1,15 +1,35 @@
+// src/App.tsx
 import './App.css'
-import GoogleMapComponent from './components/GoogleMapComponent'
+import React, { useEffect, useState } from 'react';
+import GoogleMapComponent from './components/GoogleMapComponent';
+import { fetchActivities } from './controllers/apiService';
 
-function App() {
+interface Activity {
+  id: number;
+  name: string;
+  lat: number;
+  lng: number;
+}
+
+const App: React.FC = () => {
+  const [activities, setActivities] = useState<Activity[]>([]);
+
+  useEffect(() => {
+    // Récupérer les données de l'API
+    const getActivities = async () => {
+      const data = await fetchActivities();
+      if (data) setActivities(data);
+    };
+
+    getActivities();
+  }, []);
 
   return (
     <>
-      <h1>Suggestions d'Activités Adaptées</h1>
-      <div id="map"></div>
-      <GoogleMapComponent />
+      <h1>Ma Carte avec Activités</h1>
+      <GoogleMapComponent activities={activities} />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
