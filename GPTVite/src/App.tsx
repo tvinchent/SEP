@@ -21,12 +21,13 @@ const handleGetSuggestions = async () => {
       const userLatitude = position.coords.latitude;
       const userLongitude = position.coords.longitude;
       const data = await fetchActivities(userLatitude, userLongitude);
-      if (data) {
+      if (data && data.length > 0) {
         const activitiesWithId = data.map((activity) => ({
             ...activity,
             id: uuidv4() // Génère un ID unique pour chaque activité
           }));
           setActivities(activitiesWithId);
+          setSelectedActivity(activitiesWithId[0]); // Sélectionne automatiquement le premier élément
       }
       setIsLoading(false); 
     }, 
@@ -36,12 +37,13 @@ const handleGetSuggestions = async () => {
       const userLatitude = 48.8566;
       const userLongitude = 2.3522;
       const data = await fetchActivities(userLatitude, userLongitude);
-      if (data) {
+      if (data && data.length > 0) {
           const activitiesWithId = data.map((activity) => ({
             ...activity,
             id: uuidv4() // Génère un ID unique pour chaque activité
           }));
           setActivities(activitiesWithId);
+          setSelectedActivity(activitiesWithId[0]); // Sélectionne automatiquement le premier élément
         }
         setIsLoading(false); 
     });
@@ -55,7 +57,7 @@ const handleGetSuggestions = async () => {
   return (
     <>
       {isLoading && <LoadingOverlay />}
-      <h1>Ma Carte avec Activités</h1>
+      <h1>Suggestions d'activités adaptées</h1>
 
       <GoogleMapComponent activities={activities}  onMarkerClick={setSelectedActivity} onMapLoad={() => setIsLoading(false)} />
       <button onClick={handleGetSuggestions} className='suggestButton'>Obtenir des suggestions</button>
