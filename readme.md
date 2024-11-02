@@ -1,8 +1,12 @@
 # Application de Suggestions d'Activités Adaptées
 
-## Introduction
+## Présentation générale
 
-Cette application aide les utilisateurs à trouver des activités adaptées à leurs capacités physiques, en utilisant l'API d'OpenAI pour générer des suggestions et Google Maps pour les afficher sur une carte. Voici quelques idées pour améliorer et étendre les fonctionnalités de l'application.
+L'activité physique est primordiale dans la gestion des maladies comme la Sclérose En Plaque ou Charcot. Plus généralement, il est recommandé à tous de pratiquer régulièrement de l'activité physique. Notre application vise à motiver les utilisateurs en leur suggérant des activités adaptés à leurs capacités.
+
+## Introduction technique
+
+Cette application aide les utilisateurs à trouver des activités sur mesure, en utilisant une intelligence artificielle pour générer des suggestions et Google Maps pour les afficher sur une carte.
 
 ## Version 0.2
 
@@ -11,12 +15,16 @@ Cette application aide les utilisateurs à trouver des activités adaptées à l
 - Fix des warning relatifs à l'utilisation d'une mauvaise version de map
 
 Limites:
+- La version Gemini ne fonctionne pas pour le moment.
 - Les markers ne sont pas cliquables. Pour les rendre cliquable, il faudrait utiliser la beta mais alors retour des warnings https://developers.google.com/maps/documentation/javascript/versions?hl=fr#choosing-the-beta-channel
 
 ## TODO
 
-- Géolocaliser pour positionner l'utilisateur au milieu de la carte
-- Améliorer l'UI avec un logo et un style associé
+- Utiliser Node pour l'API en utilisant un struture ViteJS
+- Mettre en place un loader pour le chargement de la carte et le chargement des suggestions
+- Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
+- Faire l'appli avec l'IA Gemini (en effetuant des requêtes via Postman?)
+
 - Porter l'application sur Android avec Expo
 - Ajouter des fonctionnalités : persistance de données, personnalisation (budget, durée - ouvert maintenant, type - culturel, social, physique + autres cf questionnaire) avec "Commencez tout de suite - Faire le questionnaire (2 minutes)"
 
