@@ -7,6 +7,7 @@ import { Activity } from './types';
 import { v4 as uuidv4 } from 'uuid';
 import telIcon from './assets/tel.png';
 import resaIcon from './assets/book.webp';
+import LoadingOverlay from './components/LoadingOverlay';
 
 const App: React.FC = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -14,6 +15,7 @@ const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true); // État de chargement de la carte
 
 const handleGetSuggestions = async () => {
+  setIsLoading(true);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const userLatitude = position.coords.latitude;
@@ -26,6 +28,7 @@ const handleGetSuggestions = async () => {
           }));
           setActivities(activitiesWithId);
       }
+      setIsLoading(false); 
     }, 
     async (error) => {
       console.error("Erreur de géolocalisation:", error);
@@ -40,18 +43,19 @@ const handleGetSuggestions = async () => {
           }));
           setActivities(activitiesWithId);
         }
+        setIsLoading(false); 
     });
   } else {
     console.error("La géolocalisation n'est pas supportée par ce navigateur.");
+    setIsLoading(false); 
   }
 };
 
 
   return (
     <>
+      {isLoading && <LoadingOverlay />}
       <h1>Ma Carte avec Activités</h1>
-
-      {isLoading && <p>Chargement de la carte...</p>} {/* Indicateur de chargement */}
 
       <GoogleMapComponent activities={activities}  onMarkerClick={setSelectedActivity} onMapLoad={() => setIsLoading(false)} />
       <button onClick={handleGetSuggestions} className='suggestButton'>Obtenir des suggestions</button>
