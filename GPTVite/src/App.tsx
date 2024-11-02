@@ -1,4 +1,5 @@
 import './App.css'
+import GoogleMapComponent from './components/GoogleMapComponent'
 
 function App() {
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <h1>Suggestions d'Activités Adaptées</h1>
       <div id="map"></div>
+      <GoogleMapComponent />
     </>
   )
 }
