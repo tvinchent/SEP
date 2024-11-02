@@ -8,6 +8,10 @@ L'activité physique est primordiale dans la gestion des maladies comme la Sclé
 
 Cette application aide les utilisateurs à trouver des activités sur mesure, en utilisant une intelligence artificielle pour générer des suggestions et Google Maps pour les afficher sur une carte.
 
+## Version 0.3
+
+- Markers cliquables
+
 ## Version 0.2
 
 - Ajout de la geolicalisation de l'utilisateur
@@ -20,10 +24,15 @@ Limites:
 ## TODO
 
 - Utiliser Node pour l'API en utilisant un struture ViteJS
+  - Afficher la carte
+  - Ajouter la géoloc
+  - Porter l'API
+  - Brancher l'API avec la carte
+- Afficher par défaut le texte de la première activité
 - Mettre en place un loader pour le chargement de la carte et le chargement des suggestions
 - Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
 - Faire l'appli avec l'IA Gemini (en effetuant la requête via Gemini)
-
+//
 - Porter l'application sur Android avec Expo
 - Ajouter des fonctionnalités : persistance de données, personnalisation (budget, durée - ouvert maintenant, type - culturel, social, physique + autres cf questionnaire) avec "Commencez tout de suite - Faire le questionnaire (2 minutes)"
 
