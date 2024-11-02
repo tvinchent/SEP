@@ -25,13 +25,14 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 
 - scrollIntoView({ behavior: "smooth" });
 - fixer la largeur de l'interface
-- Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
-- Faire l'appli avec l'IA Gemini (en effetuant la requête via Gemini)
-//
+- 2 pages dont la première est un QCM simple puis renvoie vers la page principale
+--
 - refaire l'API via PHP car l'API node ne tourne que
   - en local
   - lorsque mon server est lancé
-//
+--
+- Faire l'appli avec l'IA Gemini (en effectuant la requête via Gemini)
+- Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
 - Porter l'application sur Android avec Expo
 - Ajouter des fonctionnalités : persistance de données, personnalisation (budget, durée - ouvert maintenant, type - culturel, social, physique + autres cf questionnaire) avec "Commencez tout de suite - Faire le questionnaire (2 minutes)"
 
