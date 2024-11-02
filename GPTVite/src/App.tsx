@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import GoogleMapComponent from './components/GoogleMapComponent';
 import { fetchActivities } from './controllers/apiService';
 import { Activity } from './types';
@@ -19,7 +19,9 @@ const App: React.FC = () => {
     east: 2.4699208,
     west: 2.224199
   });
-  
+
+  const activityInfoRef = useRef<HTMLDivElement | null>(null);
+
   const handleBoundsChange = (newBounds: { north: number; south: number; east: number; west: number }) => {
     setBounds(newBounds);
   };
@@ -70,6 +72,11 @@ const App: React.FC = () => {
     }
   };
 
+  const handleMarkerClick = (activity: Activity) => {
+    setSelectedActivity(activity);
+    activityInfoRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleMapDragEnd = () => {
     setIsButtonDisabled(false);
   };
@@ -78,14 +85,7 @@ const App: React.FC = () => {
     <>
       {isLoading && <LoadingOverlay />}
       <h1>Suggestions d'activités adaptées</h1>
-
-      <GoogleMapComponent 
-        activities={activities}  
-        onMarkerClick={setSelectedActivity} 
-        onMapLoad={() => setIsLoading(false)} 
-        onMapDragEnd={handleMapDragEnd}  
-        onBoundsChange={handleBoundsChange} // Ajout de la fonction pour les limites
-      />
+      
       <button 
         onClick={handleGetSuggestions} 
         className={`suggestButton ${isButtonDisabled ? 'disabled' : ''}`} 
@@ -94,8 +94,16 @@ const App: React.FC = () => {
         Obtenir des suggestions
       </button>
 
+      <GoogleMapComponent 
+        activities={activities}  
+        onMarkerClick={handleMarkerClick} 
+        onMapLoad={() => setIsLoading(false)} 
+        onMapDragEnd={handleMapDragEnd}  
+        onBoundsChange={handleBoundsChange} // Ajout de la fonction pour les limites
+      />
+
       {selectedActivity && (
-        <div className="activity-info">
+        <div ref={activityInfoRef} className="activity-info">
           <h2>Détails de l'activité</h2>
           <p><strong> {selectedActivity.name} </strong></p>
           <p>{selectedActivity.description}</p>

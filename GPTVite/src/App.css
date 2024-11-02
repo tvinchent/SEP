@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  width: 90%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -9,9 +9,11 @@
   border: 1px solid #ff5757;
   border-radius: 5px;
   padding: 0.5rem 1rem;
-  margin: 0.5rem;
+  margin: 1rem;
   cursor: pointer;
   transition: all 0.3s;
+  width:calc(100% - 2rem);;
+  box-sizing: border-box;
 }
 .suggestButton.disabled {
   background-color: #cccccc;

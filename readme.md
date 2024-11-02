@@ -36,6 +36,11 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 - Porter l'application sur Android avec Expo
 - Ajouter des fonctionnalités : persistance de données, personnalisation (budget, durée - ouvert maintenant, type - culturel, social, physique + autres cf questionnaire) avec "Commencez tout de suite - Faire le questionnaire (2 minutes)"
 
+## Question @ Google
+
+- Comment utiliser Gemini
+- Comment faire en sorte de rechercher sur la fenêtre courante
+
 ## Synopsis de la vidéo
 
 - Présentation générale (script DONE)
