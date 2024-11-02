@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = 3001;
+const PORT = 3002;
 
 app.use(cors());
 app.use(express.json());
@@ -22,13 +22,14 @@ if (!openaiApiKey) {
 }
 
 app.post("/api/suggestions", async (req, res) => {
-  const { latitude, longitude } = req.body;
+  const { latitude, longitude, north, south, east, west } = req.body;
 
-  if (!latitude || !longitude) {
+  if (!latitude || !longitude || !north || !south || !east || !west) {
     console.error("Erreur : Latitude ou longitude manquante dans la requête");
-    return res
-      .status(400)
-      .json({ error: "Latitude et longitude sont requis." });
+    return res.status(400).json({
+      error:
+        "Latitude, longitude, et les limites de la carte (north, south, east, west) sont requis.",
+    });
   }
 
   console.log(

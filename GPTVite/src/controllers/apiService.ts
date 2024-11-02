@@ -1,14 +1,29 @@
-// src/apiService.ts
 import { Activity, ApiResponse } from '../types';
 
-export const fetchActivities = async (latitude: number, longitude: number): Promise<Activity[] | null> => {
+export const fetchActivities = async (
+  latitude: number,
+  longitude: number,
+  bounds?: { north: number; south: number; east: number; west: number } // bounds est optionnel
+): Promise<Activity[] | null> => {
   try {
-    const response = await fetch('http://localhost:3001/api/suggestions', {
+    if (!bounds) {
+      console.error("Les limites de la carte (bounds) ne sont pas définies.");
+      return null;
+    }
+
+    const response = await fetch('http://localhost:3002/api/suggestions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ latitude, longitude }),
+      body: JSON.stringify({ 
+        latitude, 
+        longitude,
+        north: bounds.north, 
+        south: bounds.south, 
+        east: bounds.east, 
+        west: bounds.west
+      }),
     });
 
     if (!response.ok) {
@@ -17,10 +32,9 @@ export const fetchActivities = async (latitude: number, longitude: number): Prom
 
     const data: ApiResponse = await response.json();
 
-    // Mapper les propriétés si nécessaire
     return data.activities.map((activity) => ({
       ...activity,
-      lat: activity.lat,  // Si les données API utilisent 'latitude' et 'longitude', ajuste ici
+      lat: activity.lat,
       lng: activity.lng,
     }));
   } catch (error) {
