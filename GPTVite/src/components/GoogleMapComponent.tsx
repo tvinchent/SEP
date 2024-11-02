@@ -7,9 +7,10 @@ interface GoogleMapComponentProps {
   activities: Activity[];
   onMarkerClick: (activity: Activity) => void; // Fonction pour gérer le clic sur un marqueur
   onMapLoad: () => void; // Fonction de rappel pour indiquer la fin du chargement de la carte
+  onMapDragEnd: () => void; // Fonction de rappel pour indiquer la fin du déplacement de la carte
 }
 
-const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({ activities, onMarkerClick, onMapLoad }) => {
+const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({ activities, onMarkerClick, onMapLoad, onMapDragEnd }) => {
 // État pour stocker la position actuelle de l'utilisateur
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
 
@@ -37,6 +38,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({ activities, onM
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
       <GoogleMap
       onLoad={onMapLoad} // Appelé lorsque la carte est prête
+      onDragEnd={onMapDragEnd} // Appelée à la fin du déplacement de la carte
       mapContainerStyle={{ width: '100%', height: '400px' }}
       center={userLocation || { lat: 48.8566, lng: 2.3522 }} // Par défaut, centre sur Paris
       zoom={userLocation ? 14 : 10} // Zoom plus proche si la position de l'utilisateur est trouvée

@@ -57,13 +57,18 @@ const handleGetSuggestions = async () => {
   }
 };
 
+// Fonction de rappel pour réactiver le bouton quand la carte est déplacée
+  const handleMapDragEnd = () => {
+    setIsButtonDisabled(false);
+  };
+
 
   return (
     <>
       {isLoading && <LoadingOverlay />}
       <h1>Suggestions d'activités adaptées</h1>
 
-      <GoogleMapComponent activities={activities}  onMarkerClick={setSelectedActivity} onMapLoad={() => setIsLoading(false)} />
+      <GoogleMapComponent activities={activities}  onMarkerClick={setSelectedActivity} onMapLoad={() => setIsLoading(false)} onMapDragEnd={handleMapDragEnd} />
       <button 
         onClick={handleGetSuggestions} 
         className={`suggestButton ${isButtonDisabled ? 'disabled' : ''}`} 
