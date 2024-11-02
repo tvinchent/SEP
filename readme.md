@@ -4,9 +4,21 @@
 
 L'activité physique est primordiale dans la gestion des maladies comme la Sclérose En Plaque ou Charcot. Plus généralement, il est recommandé à tous de pratiquer régulièrement de l'activité physique. Notre application vise à motiver les utilisateurs en leur suggérant des activités adaptés à leurs capacités.
 
+## Synopsis de la vidéo
+
+- Présentation générale (script DONE)
+- Présentation de l'équipe (TODO)
+- Présentation de l'application (TODO)
+- Présentation technique (script DONE)
+
 ## Introduction technique
 
 Cette application aide les utilisateurs à trouver des activités sur mesure, en utilisant une intelligence artificielle pour générer des suggestions et Google Maps pour les afficher sur une carte.
+
+## Version 0.4
+
+- Utiliser Node pour l'API en utilisant une struture ViteJS
+- Ajout d'un loading
 
 ## Version 0.3
 
@@ -23,11 +35,6 @@ Limites:
 
 ## TODO
 
-- Utiliser Node pour l'API en utilisant un struture ViteJS
-  - Afficher la carte
-  - Ajouter la géoloc
-  - Porter l'API
-  - Brancher l'API avec la carte
 - Afficher par défaut le texte de la première activité
 - Mettre en place un loader pour le chargement de la carte et le chargement des suggestions
 - Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
