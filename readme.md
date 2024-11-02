@@ -19,6 +19,7 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 
 - Utiliser Node pour l'API en utilisant une struture ViteJS
 - Ajout d'un loading
+- Affiche par défaut le texte de la première activité
 
 ## Version 0.3
 
@@ -35,8 +36,6 @@ Limites:
 
 ## TODO
 
-- Afficher par défaut le texte de la première activité
-- Mettre en place un loader pour le chargement de la carte et le chargement des suggestions
 - Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
 - Faire l'appli avec l'IA Gemini (en effetuant la requête via Gemini)
 //
