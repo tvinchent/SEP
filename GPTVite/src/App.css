@@ -9,10 +9,10 @@
   border: 1px solid #ff5757;
   border-radius: 5px;
   padding: 0.5rem 1rem;
-  margin: 1rem;
+  margin-bottom: 1.5rem;
   cursor: pointer;
   transition: all 0.3s;
-  width:calc(100% - 2rem);;
+  width:100%;
   box-sizing: border-box;
 }
 .suggestButton.disabled {
@@ -21,6 +21,17 @@
   color: #666666;
   cursor: not-allowed;
   opacity: 0.6;
+}
+.helloButton{
+  background-color: #ff5757;
+  border: 1px solid #ff5757;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  width:100%;
+  box-sizing: border-box;
 }
 .activity-info {
   margin-top: 20px;

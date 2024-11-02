@@ -22,7 +22,7 @@ if (!openaiApiKey) {
 }
 
 app.post("/api/suggestions", async (req, res) => {
-  const { latitude, longitude, north, south, east, west } = req.body;
+  const { latitude, longitude, north, south, east, west, userInfo } = req.body;
 
   if (!latitude || !longitude || !north || !south || !east || !west) {
     console.error("Erreur : Latitude ou longitude manquante dans la requête");
@@ -36,6 +36,23 @@ app.post("/api/suggestions", async (req, res) => {
     `Requête reçue pour les coordonnées : latitude=${latitude}, longitude=${longitude}`
   );
 
+  // Construire le message utilisateur pour OpenAI en incluant les informations utilisateur
+  const userMessageContent = `Génère une liste de 5 activités adaptées pour une personne ayant la capacité "${
+    userInfo?.ability
+  }", 
+    se trouvant à la latitude ${latitude} et la longitude ${longitude}${
+    userInfo?.activityPreferences
+      ? `, avec des préférences pour les activités suivantes : ${userInfo.activityPreferences}`
+      : ""
+  }. Retourne les résultats au format JSON avec un tableau nommé 'activities' contenant pour chaque activité les champs suivants :
+  - 'name' : nom de l'activité
+  - 'description' : description de l'activité
+  - 'lat' et 'lng' : coordonnées géographiques de l'activité proches de la position de l'utilisateur
+  - 'opening_hours' : horaires d'ouverture (si disponibles)
+  - 'booking_link' : URL pour la réservation en ligne (si disponible)
+  - 'phone_number' : numéro de téléphone (si disponible)
+  Assure-toi que la sortie est uniquement le JSON sans texte supplémentaire.`;
+
   const messages = [
     {
       role: "system",
@@ -43,14 +60,7 @@ app.post("/api/suggestions", async (req, res) => {
     },
     {
       role: "user",
-      content: `Génère une liste de 5 activités adaptées pour une personne qui est PMR se trouvant à la latitude ${latitude} et la longitude ${longitude}. Retourne les résultats au format JSON avec un tableau nommé 'activities' contenant pour chaque activité les champs suivants :
-      - 'name' : nom de l'activité
-      - 'description' : description de l'activité
-      - 'lat' et 'lng' : coordonnées géographiques de l'activité proches de la position de l'utilisateur
-      - 'opening_hours' : horaires d'ouverture (si disponibles)
-      - 'booking_link' : URL pour la réservation en ligne (si disponible)
-      - 'phone_number' : numéro de téléphone (si disponible)
-      Assure-toi que la sortie est uniquement le JSON sans texte supplémentaire.`,
+      content: userMessageContent,
     },
   ];
 

@@ -1,9 +1,15 @@
 import { Activity, ApiResponse } from '../types';
 
+interface UserInfo {
+  name: string;
+  activityPreferences: string;
+}
+
 export const fetchActivities = async (
   latitude: number,
   longitude: number,
-  bounds?: { north: number; south: number; east: number; west: number } // bounds est optionnel
+  bounds?: { north: number; south: number; east: number; west: number },
+  userInfo?: UserInfo // Ajout des informations utilisateur en tant que paramètre optionnel
 ): Promise<Activity[] | null> => {
   try {
     if (!bounds) {
@@ -11,19 +17,22 @@ export const fetchActivities = async (
       return null;
     }
 
-    const response = await fetch('http://localhost:3002/api/suggestions', {
+    const requestBody = {
+      latitude,
+      longitude,
+      north: bounds.north,
+      south: bounds.south,
+      east: bounds.east,
+      west: bounds.west,
+      userInfo, // Ajout des informations utilisateur dans le corps de la requête
+    };
+
+    const response = await fetch('https://je-code.com/sep/GPTVite/api/getActivities.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ 
-        latitude, 
-        longitude,
-        north: bounds.north, 
-        south: bounds.south, 
-        east: bounds.east, 
-        west: bounds.west
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
