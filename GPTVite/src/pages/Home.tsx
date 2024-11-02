@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
+    <div className="container">
       <h1>Bienvenue !</h1>
       <p>Pour mieux personnaliser vos suggestions d'activités, merci de remplir ce formulaire.</p>
       <form onSubmit={handleFormSubmit}>

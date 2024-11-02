@@ -15,6 +15,9 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 - Affiche par défaut le texte de la première activité
 - Markers cliquables
 - Appel à l'api au chargement de la page
+- 2 pages dont la première est un QCM simple puis renvoie vers la page principale
+- rollback: API via PHP
+- ajout de Bootstrap
 
 ## Version 0.2
 
@@ -24,12 +27,6 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 
 ## TODO
 
-- 2 pages dont la première est un QCM simple puis renvoie vers la page principale
---
-- refaire l'API via PHP car l'API node ne tourne que
-  - en local
-  - lorsque mon server est lancé
---
 - Faire l'appli avec l'IA Gemini (en effectuant la requête via Gemini)
 - Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
 - Porter l'application sur Android avec Expo

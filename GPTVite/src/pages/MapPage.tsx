@@ -83,6 +83,7 @@ const MapPage: React.FC = () => {
 
   return (
     <>
+    <div className="container">
       {isLoading && <LoadingOverlay />}
       <h1>Suggestions d'activités adaptées</h1>
 
@@ -118,6 +119,7 @@ const MapPage: React.FC = () => {
         <h6>ChatGPT peut faire des erreurs. Envisagez de vérifier les informations importantes.</h6>
         </div>
       )}
+      </div>
     </>
   );
 };
