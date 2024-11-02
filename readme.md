@@ -17,7 +17,7 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 - Appel à l'api au chargement de la page
 - 2 pages dont la première est un QCM simple puis renvoie vers la page principale
 - rollback: API via PHP
-- ajout de Bootstrap
+- ajout de Bootstrap & dark mode
 
 ## Version 0.2
 
