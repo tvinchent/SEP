@@ -1,6 +1,6 @@
 // src/types.ts
 export interface Activity {
-  id: number;
+  id: string;
   name: string;
   description: string;
   lat: number; // Utilisation de 'lat' au lieu de 'latitude'

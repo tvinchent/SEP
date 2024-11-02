@@ -41,9 +41,9 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({ activities }) =
         {/* Ajout des marqueurs pour chaque activité */}
         {activities.map((activity) => (
           <Marker
-            key={activity.name}
+            key={activity.id}
             position={{ lat: activity.lat, lng: activity.lng }}
-            label={activity.name} // Affiche le nom de l'activité sur le marqueur
+            label={activity.name.charAt(0)} // Affiche le nom de l'activité sur le marqueur
           />
         ))}
       </GoogleMap>
