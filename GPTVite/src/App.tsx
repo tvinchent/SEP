@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import GoogleMapComponent from './components/GoogleMapComponent';
 import { fetchActivities } from './controllers/apiService';
 import { Activity } from './types';
@@ -81,11 +81,17 @@ const App: React.FC = () => {
     setIsButtonDisabled(false);
   };
 
+  // Appeler l'API au chargement de l'application
+  useEffect(() => {
+    handleGetSuggestions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       {isLoading && <LoadingOverlay />}
       <h1>Suggestions d'activités adaptées</h1>
-      
+
       <button 
         onClick={handleGetSuggestions} 
         className={`suggestButton ${isButtonDisabled ? 'disabled' : ''}`} 

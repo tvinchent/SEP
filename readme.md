@@ -14,6 +14,7 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 - Ajout d'un loading
 - Affiche par défaut le texte de la première activité
 - Markers cliquables
+- Appel à l'api au chargement de la page
 
 ## Version 0.2
 
@@ -23,8 +24,6 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 
 ## TODO
 
-- scrollIntoView({ behavior: "smooth" });
-- fixer la largeur de l'interface
 - 2 pages dont la première est un QCM simple puis renvoie vers la page principale
 --
 - refaire l'API via PHP car l'API node ne tourne que
