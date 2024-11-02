@@ -13,9 +13,11 @@ const App: React.FC = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null); // État pour le marqueur sélectionné
   const [isLoading, setIsLoading] = useState(true); // État de chargement de la carte
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false); // État du bouton
 
 const handleGetSuggestions = async () => {
   setIsLoading(true);
+  setIsButtonDisabled(false);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const userLatitude = position.coords.latitude;
@@ -29,7 +31,8 @@ const handleGetSuggestions = async () => {
           setActivities(activitiesWithId);
           setSelectedActivity(activitiesWithId[0]); // Sélectionne automatiquement le premier élément
       }
-      setIsLoading(false); 
+      setIsLoading(false);
+      setIsButtonDisabled(true); // Désactive le bouton après la fin de la requête
     }, 
     async (error) => {
       console.error("Erreur de géolocalisation:", error);
@@ -45,7 +48,8 @@ const handleGetSuggestions = async () => {
           setActivities(activitiesWithId);
           setSelectedActivity(activitiesWithId[0]); // Sélectionne automatiquement le premier élément
         }
-        setIsLoading(false); 
+        setIsLoading(false);
+        setIsButtonDisabled(true); // Désactive le bouton après la fin de la requête
     });
   } else {
     console.error("La géolocalisation n'est pas supportée par ce navigateur.");
@@ -60,7 +64,11 @@ const handleGetSuggestions = async () => {
       <h1>Suggestions d'activités adaptées</h1>
 
       <GoogleMapComponent activities={activities}  onMarkerClick={setSelectedActivity} onMapLoad={() => setIsLoading(false)} />
-      <button onClick={handleGetSuggestions} className='suggestButton'>Obtenir des suggestions</button>
+      <button 
+        onClick={handleGetSuggestions} 
+        className={`suggestButton ${isButtonDisabled ? 'disabled' : ''}`} 
+        disabled={isButtonDisabled} // Désactive le bouton
+      >Obtenir des suggestions</button>
 
       {/* Affichage des informations du marqueur sélectionné */}
       {selectedActivity && (

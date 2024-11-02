@@ -13,6 +13,13 @@
   cursor: pointer;
   transition: all 0.3s;
 }
+.suggestButton.disabled {
+  background-color: #cccccc;
+  border: 1px solid #333;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 .activity-info {
   margin-top: 20px;
   padding: 10px;
