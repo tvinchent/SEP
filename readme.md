@@ -27,9 +27,9 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 
 ## TODO
 
-- Faire l'appli avec l'IA Gemini (en effectuant la requête via Gemini)
-- Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
 - Porter l'application sur Android avec Expo
+- Faire l'appli avec l'IA Gemini (en effectuant au préalable la requête via Gemini)
+- Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
 - Ajouter des fonctionnalités : persistance de données, personnalisation (budget, durée - ouvert maintenant, type - culturel, social, physique + autres cf questionnaire) avec "Commencez tout de suite - Faire le questionnaire (2 minutes)"
 
 ## Question @ Google
