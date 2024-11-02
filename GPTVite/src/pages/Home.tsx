@@ -16,9 +16,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="container">
-        <div>
-      <h1>Bienvenue dans l'application</h1>
-    </div>
       <h1>Bienvenue !</h1>
       <p>Pour mieux personnaliser vos suggestions d'activités, merci de remplir ce formulaire.</p>
       <form onSubmit={handleFormSubmit}>
