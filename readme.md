@@ -4,25 +4,15 @@
 
 L'activité physique est primordiale dans la gestion des maladies comme la Sclérose En Plaque ou Charcot. Plus généralement, il est recommandé à tous de pratiquer régulièrement de l'activité physique. Notre application vise à motiver les utilisateurs en leur suggérant des activités adaptés à leurs capacités.
 
-## Synopsis de la vidéo
-
-- Présentation générale (script DONE)
-- Présentation de l'équipe (TODO)
-- Présentation de l'application (TODO)
-- Présentation technique (script DONE)
-
 ## Introduction technique
 
 Cette application aide les utilisateurs à trouver des activités sur mesure, en utilisant une intelligence artificielle pour générer des suggestions et Google Maps pour les afficher sur une carte.
 
-## Version 0.4
-
-- Utiliser Node pour l'API en utilisant une struture ViteJS
-- Ajout d'un loading
-- Affiche par défaut le texte de la première activité
-
 ## Version 0.3
 
+- Utiliser Node pour l'API en utilisant une structure ViteJS
+- Ajout d'un loading
+- Affiche par défaut le texte de la première activité
 - Markers cliquables
 
 ## Version 0.2
@@ -31,16 +21,26 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 - Affichage des infos des activités en dessous de la carte
 - Fix des warning relatifs à l'utilisation d'une mauvaise version de map
 
-Limites:
-- La version Gemini ne fonctionne pas pour le moment.
-
 ## TODO
 
+- scrollIntoView({ behavior: "smooth" });
+- fixer la largeur de l'interface
 - Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
 - Faire l'appli avec l'IA Gemini (en effetuant la requête via Gemini)
 //
+- refaire l'API via PHP car l'API node ne tourne que
+  - en local
+  - lorsque mon server est lancé
+//
 - Porter l'application sur Android avec Expo
 - Ajouter des fonctionnalités : persistance de données, personnalisation (budget, durée - ouvert maintenant, type - culturel, social, physique + autres cf questionnaire) avec "Commencez tout de suite - Faire le questionnaire (2 minutes)"
+
+## Synopsis de la vidéo
+
+- Présentation générale (script DONE)
+- Présentation de l'équipe (TODO)
+- Présentation de l'application (TODO)
+- Présentation technique (script DONE)
 
 ## Améliorations proposées par GPT
 
