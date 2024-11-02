@@ -16,14 +16,13 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 
 Limites:
 - La version Gemini ne fonctionne pas pour le moment.
-- Les markers ne sont pas cliquables. Pour les rendre cliquable, il faudrait utiliser la beta mais alors retour des warnings https://developers.google.com/maps/documentation/javascript/versions?hl=fr#choosing-the-beta-channel
 
 ## TODO
 
 - Utiliser Node pour l'API en utilisant un struture ViteJS
 - Mettre en place un loader pour le chargement de la carte et le chargement des suggestions
 - Relancer la recherche sur la base de la position courante de la carte et non les coords geolocalisés
-- Faire l'appli avec l'IA Gemini (en effetuant des requêtes via Postman?)
+- Faire l'appli avec l'IA Gemini (en effetuant la requête via Gemini)
 
 - Porter l'application sur Android avec Expo
 - Ajouter des fonctionnalités : persistance de données, personnalisation (budget, durée - ouvert maintenant, type - culturel, social, physique + autres cf questionnaire) avec "Commencez tout de suite - Faire le questionnaire (2 minutes)"
