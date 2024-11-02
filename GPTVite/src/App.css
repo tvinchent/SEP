@@ -4,3 +4,12 @@
   padding: 2rem;
   text-align: center;
 }
+.suggestButton{
+  background-color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
