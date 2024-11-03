@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
-  const [ability, setAbility] = useState('PMR');
+  const [ability, setAbility] = useState('moteur');
   const [activityPreferences, setActivityPreferences] = useState('');
   const navigate = useNavigate();
 
@@ -32,6 +32,7 @@ const Home: React.FC = () => {
                 <option value="psychique">Handicap psychique</option>
                 <option value="cognitif">Handicap cognitif</option>
                 <option value="multi">Multi handicap</option>
+                <option value="valide">Sans handicap</option>
             </select>
           </label>
         </div>

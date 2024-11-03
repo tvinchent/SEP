@@ -5,8 +5,10 @@ import GoogleMapComponent from '../components/GoogleMapComponent';
 import { fetchActivities } from '../controllers/apiService';
 import { Activity } from '../types';
 import { v4 as uuidv4 } from 'uuid';
-import telIcon from '../assets/tel.png';
-import resaIcon from '../assets/book.webp';
+// import resaIcon from '../assets/book.webp';
+import AddCircleIcon from '../assets/add_circle.svg';
+// import telIcon from '../assets/tel.png';
+import PlayCircleIcon from '../assets/play_circle.svg';
 import LoadingOverlay from '../components/LoadingOverlay';
 
 interface UserInfo {
@@ -110,11 +112,11 @@ const MapPage: React.FC = () => {
           <p>{selectedActivity.description}</p>
           <p><strong>Horaires d'ouverture :</strong> {selectedActivity.opening_hours}</p>
           {selectedActivity.booking_link && (
-            <span><a href={selectedActivity.booking_link} target="_blank" rel="noopener noreferrer"><img src={resaIcon} alt='Reserver' style={{ width: '20px', height: '20px' }} /></a></span>
+            <span><a href={selectedActivity.booking_link} target="_blank" rel="noopener noreferrer" className='link'><img src={AddCircleIcon} alt="Reserver" /> Reserver</a></span>
           )}
           &nbsp;
           {selectedActivity.phone_number && (
-            <span><a href={`tel:${selectedActivity.phone_number}`}><img src={telIcon} alt='Appeler' style={{ width: '20px', height: '20px' }} /></a></span>
+            <span><a href={`tel:${selectedActivity.phone_number}`} className='link'><img src={PlayCircleIcon} alt="Appeler" /> Appeler</a></span>
           )}
         <h6>ChatGPT peut faire des erreurs. Envisagez de vérifier les informations importantes.</h6>
         </div>

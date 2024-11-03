@@ -9,11 +9,22 @@ button {
 }
 
 #root {
-  width: 90%;
+  /* width: 90%; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
+
+.link {
+  color: #ff5757;
+  text-decoration: none;
+}
+
+h6 {
+  margin-top: 1em;
+  font-size: 0.75em;
+}
+
 .suggestButton{
   background-color: #ff5757;
   border: 1px solid #ff5757;

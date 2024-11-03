@@ -2,7 +2,7 @@
 
 ## Présentation générale
 
-L'activité physique est primordiale dans la gestion des maladies comme la Sclérose En Plaque ou Charcot. Plus généralement, il est recommandé à tous de pratiquer régulièrement de l'activité physique. Notre application vise à motiver les utilisateurs en leur suggérant des activités adaptés à leurs capacités.
+L'activité physique est primordiale dans la gestion des maladies comme la Sclérose En Plaque ou Charcot. Plus généralement, il est recommandé à tous de pratiquer régulièrement de l'activité physique. Notre application vise à motiver les utilisateurs, en leur suggérant des activités adaptés à leurs capacités.
 
 ## Introduction technique
 
