@@ -23,6 +23,7 @@ const Home: React.FC = () => {
           <label>
             Mes capacités :
             <select 
+            className='form-select'
               value={ability} 
               onChange={(e) => setAbility(e.target.value)}
             >
@@ -40,6 +41,7 @@ const Home: React.FC = () => {
           <label>
             Préférences d'activités : 
             <input 
+            className='form-control'
               type="text" 
               value={activityPreferences} 
               onChange={(e) => setActivityPreferences(e.target.value)} 
@@ -47,7 +49,7 @@ const Home: React.FC = () => {
             />
           </label>
         </div>
-        <button type="submit" className='helloButton'>Passer à la carte (acceptez la géolocalisation)</button>
+        <button type="submit" className='helloButton'>Passer à la carte</button>
       </form>
     </div>
   );
