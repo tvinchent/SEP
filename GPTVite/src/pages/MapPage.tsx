@@ -2,7 +2,7 @@ import '../App.css';
 import React, { useState, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import GoogleMapComponent from '../components/GoogleMapComponent';
-import { fetchActivities } from '../controllers/apiService';
+import { fetchActivities } from '../controllers/apiServiceGPT';
 import { Activity } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 // import resaIcon from '../assets/book.webp';

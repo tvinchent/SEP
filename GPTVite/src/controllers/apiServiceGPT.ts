@@ -27,7 +27,7 @@ export const fetchActivities = async (
       userInfo, // Ajout des informations utilisateur dans le corps de la requête
     };
 
-    const response = await fetch('https://je-code.com/sep/GPTVite/api/getActivitiesGoogle.php', {
+    const response = await fetch('https://je-code.com/sep/GPTVite/api/getActivities.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -45,7 +45,7 @@ $activityPreferences = $userInfo['activityPreferences'] ?? null;
 
 $preferencesText = $activityPreferences ? ", avec des préférences pour les activités suivantes : $activityPreferences" : "";
 
-// Construire le prompt pour l'API OpenAI
+// Construire le prompt pour l'API Gemini
 $prompt = "Génère une liste de 5 activités adaptées pour une personne ayant la capacité \"$ability\", se trouvant à la latitude $userLatitude et la longitude $userLongitude$preferencesText. Retourne les résultats au format JSON avec un tableau nommé 'activities' contenant pour chaque activité les champs suivants :
 - 'name' : nom de l'activité
 - 'description' : description de l'activité
@@ -55,35 +55,34 @@ $prompt = "Génère une liste de 5 activités adaptées pour une personne ayant 
 - 'phone_number' : numéro de téléphone (si disponible)
 Assure-toi que la sortie est uniquement le JSON sans texte supplémentaire.";
 
-$maxTokens = 1500;
-$apiUrl = 'https://api.openai.com/v1/chat/completions';
+// URL de l'API Gemini avec la clé API
+$apiKey = $_ENV['GOOGLE_API_KEY'];
+$apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=' . $apiKey;
 
+// Construire les données de la requête
 $requestData = [
-    "model" => "gpt-3.5-turbo",
-    "messages" => [
+    "contents" => [
         [
-            "role" => "system",
-            "content" => "Tu es un assistant qui aide à trouver des activités adaptées."
-        ],
-        [
-            "role" => "user",
-            "content" => $prompt
+            "parts" => [
+                [
+                    "text" => $prompt
+                ]
+            ]
         ]
-    ],
-    "temperature" => 0.7,
-    "max_tokens" => $maxTokens,
+    ]
 ];
 
+// Initialiser cURL
 $ch = curl_init($apiUrl);
 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    'Content-Type: application/json',
-    'Authorization: Bearer ' . $_ENV['OPENAI_API_KEY']
+    'Content-Type: application/json'
 ]);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($requestData));
 
+// Exécuter la requête
 $response = curl_exec($ch);
 
 if ($response === false) {
@@ -110,7 +109,8 @@ if (isset($apiResponse['error'])) {
     exit();
 }
 
-$assistantReply = $apiResponse['choices'][0]['message']['content'] ?? null;
+// Extraire la réponse de l'assistant
+$assistantReply = $apiResponse['contents'][0]['parts'][0]['text'] ?? null;
 
 if (!$assistantReply) {
     http_response_code(500);
@@ -135,6 +135,5 @@ if (!isset($suggestions['activities']) || !is_array($suggestions['activities']))
     exit();
 }
 
-
-
 echo json_encode($suggestions);
+?>

@@ -6,7 +6,17 @@ L'activité physique est primordiale dans la gestion des maladies comme la Sclé
 
 ## Introduction technique
 
-Cette application aide les utilisateurs à trouver des activités sur mesure, en utilisant une intelligence artificielle pour générer des suggestions et Google Maps pour les afficher sur une carte.
+Cette application aide les utilisateurs à trouver des activités sur mesure, en utilisant les deux technologies web les plus puissantes à l'heure actuelle :
+
+- une intelligence artificielle pour générer des suggestions
+- Google Maps pour les afficher sur une carte.
+
+## Ouverture
+
+- Recommandations contextuelles dynamiques (branché sur les données de santé, météo, heure, évènements)
+- Apprentissage supervisé en temps réel (amélioration à chaque interaction)
+- Rnn/transformer (séquence temporelle d’interaction de l’utilisateur avec l’application)
+  Défis techniques : volume de donnée
 
 ## Version 0.3
 
