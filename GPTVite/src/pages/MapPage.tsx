@@ -10,6 +10,7 @@ import AddCircleIcon from '../assets/add_circle.svg';
 // import telIcon from '../assets/tel.png';
 import PlayCircleIcon from '../assets/play_circle.svg';
 import LoadingOverlay from '../components/LoadingOverlay';
+import logo from '../assets/logo-goyolo.png';
 
 interface UserInfo {
   name: string;
@@ -87,7 +88,8 @@ const MapPage: React.FC = () => {
     <>
     <div className="container">
       {isLoading && <LoadingOverlay />}
-      <h1>Suggestions d'activités adaptées</h1>
+      <img src={logo} className="img-fluid" alt="Logo Goyolo" />
+      {/* <h1>Suggestions d'activités adaptées</h1> */}
 
       <button 
         onClick={handleGetSuggestions} 
@@ -108,9 +110,9 @@ const MapPage: React.FC = () => {
       {selectedActivity && (
         <div ref={activityInfoRef} className="activity-info">
           <h2>Détails de l'activité</h2>
-          <p><strong> {selectedActivity.name} </strong></p>
+          <p className='activityName'><strong> {selectedActivity.name} </strong></p>
           <p>{selectedActivity.description}</p>
-          <p><strong>Horaires d'ouverture :</strong> {selectedActivity.opening_hours}</p>
+          <p className='activityOpening'><strong>Horaires d'ouverture :</strong> {selectedActivity.opening_hours}</p>
           {selectedActivity.booking_link && (
             <span><a href={selectedActivity.booking_link} target="_blank" rel="noopener noreferrer" className='link'><img src={AddCircleIcon} alt="Reserver" /> Reserver</a></span>
           )}

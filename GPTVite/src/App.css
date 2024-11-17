@@ -1,3 +1,7 @@
+:root {
+  --background-color: var(--bs-light);
+}
+
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -70,4 +74,10 @@ h6 {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+}
+.activityName{
+  color: #7ed957;
+}
+.activityOpening{
+  color: #ffb800;
 }
