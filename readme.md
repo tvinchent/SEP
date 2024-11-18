@@ -1,5 +1,11 @@
 # Application de Suggestions d'Activités Adaptées
 
+## Sommaire
+
+1. Déploiement
+2. Présentation
+3. Note de version & Work In Progress
+
 ## Déploiement
 
 Nécessite l'ajout d'un .env à la racine avec un VITE_GOOGLE_MAPS_API_KEY
