@@ -9,7 +9,7 @@ export const fetchActivities = async (
   latitude: number,
   longitude: number,
   bounds?: { north: number; south: number; east: number; west: number },
-  userInfo?: UserInfo // Ajout des informations utilisateur en tant que paramètre optionnel
+  userInfo?: UserInfo
 ): Promise<Activity[] | null> => {
   try {
     if (!bounds) {
@@ -24,7 +24,7 @@ export const fetchActivities = async (
       south: bounds.south,
       east: bounds.east,
       west: bounds.west,
-      userInfo, // Ajout des informations utilisateur dans le corps de la requête
+      userInfo,
     };
 
     const response = await fetch('https://je-code.com/sep/GPTVite/api/getActivitiesGoogle.php', {
@@ -39,7 +39,23 @@ export const fetchActivities = async (
       throw new Error("Erreur lors de la récupération des données de l'API");
     }
 
-    const data: ApiResponse = await response.json();
+    // Étape 1: Obtenir la réponse JSON complète
+    const responseJson = await response.json();
+
+    // Vérifier s'il y a une erreur dans la réponse
+    if (responseJson.error) {
+      console.error("Erreur API : ", responseJson.error);
+      return null;
+    }
+
+    // Étape 2: Naviguer jusqu'à la propriété 'text'
+    const textContent = responseJson.details.candidates[0].content.parts[0].text;
+
+    // Étape 3: Nettoyer la chaîne JSON
+    const jsonString = textContent.replace(/^```json\s*/, '').replace(/```$/, '').trim();
+
+    // Étape 4: Analyser la chaîne JSON
+    const data: ApiResponse = JSON.parse(jsonString);
 
     return data.activities.map((activity) => ({
       ...activity,
@@ -51,3 +67,4 @@ export const fetchActivities = async (
     return null;
   }
 };
+
