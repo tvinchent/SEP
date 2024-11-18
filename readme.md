@@ -11,6 +11,10 @@
 Nécessite l'ajout d'un .env à la racine avec un VITE_GOOGLE_MAPS_API_KEY
 
 ```
+cd SEP/GPTVite/
+```
+
+```
 npm i
 ```
 
