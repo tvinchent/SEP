@@ -5,7 +5,7 @@ import MapPage from './pages/MapPage';
 
 const App: React.FC = () => {
   return (
-    <Router basename="/sep/GPTVite">
+    <Router basename="/thibault/GoodMaps/">
       <Routes>
         <Route path="/" element={<Home />} /> {/* Page d'accueil */}
         <Route path="/map" element={<MapPage />} /> {/* Page de la carte */}

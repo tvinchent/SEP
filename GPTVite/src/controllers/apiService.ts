@@ -27,7 +27,7 @@ export const fetchActivities = async (
       userInfo,
     };
 
-    const response = await fetch('https://je-code.com/sep/GPTVite/api/getActivitiesGoogle.php', {
+    const response = await fetch('https://www.unsimplesourire.com/thibault/GoodMaps/api/getActivities.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

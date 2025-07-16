@@ -10,7 +10,7 @@ import AddCircleIcon from '../assets/add_circle.svg';
 // import telIcon from '../assets/tel.png';
 import PlayCircleIcon from '../assets/play_circle.svg';
 import LoadingOverlay from '../components/LoadingOverlay';
-import logo from '../assets/logo-goyolo.png';
+import logo from '../assets/logo-goodmaps.png';
 
 interface UserInfo {
   name: string;
@@ -88,7 +88,7 @@ const MapPage: React.FC = () => {
     <>
     <div className="container">
       {isLoading && <LoadingOverlay />}
-      <img src={logo} className="img-fluid" alt="Logo Goyolo" />
+      <img src={logo} className="img-fluid" alt="Logo GoodMaps" />
       {/* <h1>Suggestions d'activités adaptées</h1> */}
 
       <button 

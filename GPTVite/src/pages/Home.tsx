@@ -1,7 +1,7 @@
 import '../App.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo-goyolo.png';
+import logo from '../assets/logo-goodmaps.png';
 
 const Home: React.FC = () => {
   const [ability, setAbility] = useState('moteur');
@@ -17,8 +17,8 @@ const Home: React.FC = () => {
 
   return (
     <div className="container">
-      <img src={logo} className="img-fluid" alt="Logo Goyolo" />
-      <h1>Bienvenue sur Goyolo !</h1>
+      <img src={logo} className="img-fluid" alt="Logo GoodMaps" />
+      <h1>Bienvenue sur GoodMaps !</h1>
       <p>Pour mieux personnaliser vos suggestions d'activités, merci de remplir ce formulaire.</p>
       <form onSubmit={handleFormSubmit}>
         <div>
