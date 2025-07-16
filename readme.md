@@ -5,7 +5,7 @@
 1. Présentation
 2. Note de version & Work In Progress
 3. Améliorations proposées par GPT
-4. Déploiement
+4. Notice pour les développeurs
 
 ## Présentation
 
