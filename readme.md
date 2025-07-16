@@ -132,9 +132,27 @@ Cette application aide les utilisateurs à trouver des activités sur mesure, en
 - **Intégration d'Outils d'Analyse** : Utilisez des outils comme Google Analytics pour suivre l'utilisation de l'application.
 - **Feedback Utilisateur** : Mettez en place des sondages ou des formulaires pour recueillir les retours des utilisateurs.
 
-© 2024 EPSI Lille
+## Notice pour les développeurs
 
-## Déploiement
+### Revue de code
+
+Le code comprend 2 grandes parties :
+- L'api, dans le dossier "api". Une fois modifiés, les fichiers doivent être sur un serveur pour que l'application fonctionne.
+- L'application, dans le dossier "src". Une fois modifiés, il faut lancer *npm run build* pour mettre à jour les fichiers du dossier "dist" qu'il faudra ensuite mettre également sur le serveur pour que l'application fonctionne.
+
+#### API
+
+L'api prends en entrée les coordonnées de la carte, les capacités et les préférences d'activités indiquées par l'utilisateur.
+Elle renvoie 5 résultats au format json.
+
+#### SRC
+
+- dossier "assets" qui contient les logo et picto.
+- dossier "components" qui contient le composant Google Maps et le composant de loading.
+- dossier "controllers" qui fait le lien entre l'application et l'api en récupérant les variables à envoyer à l'api et en effectuant la requête via un fetch.
+- dossier "pages" qui contient la home (page d'accueil) et MapPage, la deuxième page avec la carte et les suggestions en dessous. Cette dernière est la page principale de l'application.
+
+### Déploiement
 
 Nécessite l'ajout d'un .env à la racine avec un VITE_GOOGLE_MAPS_API_KEY
 
