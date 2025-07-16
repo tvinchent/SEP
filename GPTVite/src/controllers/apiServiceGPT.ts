@@ -35,11 +35,11 @@ export const fetchActivities = async (
       body: JSON.stringify(requestBody),
     });
 
-    if (!response.ok) {
-      throw new Error("Erreur lors de la récupération des données de l'API");
-    }
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des données de l'API");
+      }
 
-    const data: ApiResponse = await response.json();
+      const data: ApiResponse = await response.json();
 
     return data.activities.map((activity) => ({
       ...activity,
